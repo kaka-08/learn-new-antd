@@ -1,33 +1,29 @@
 import React from 'react';
 
 export interface ZwjProps {
-  age?: string;
+  age?: number;
   name?: string;
 }
 
-export interface ZwjState {
-}
+export default class Zwj extends React.Component<ZwjProps, any> {
 
-export default class Zwj extends React.Component<ZwjProps, ZwjState> {
+  static defaultProps = {
+    age: 22,
+    name: 'zhang kaka',
+  };
 
   constructor(props: ZwjProps) {
     super(props);
-
     this.state = {
-      age: 22,
-      name: "zwj",
+      age: props.age,
+      name: props.name,
     };
   }
 
-
   render() {
-    const { ...otherProps } = this.props;
-    const name = this.state.name;
-    const age = this.state.age;
+    const { age, name } = this.state;
     return (
-      <div>
-        name: {name},--age:{age}
-      </div>
+      <p>name: {name},age:{age}</p>
     );
   }
 }
